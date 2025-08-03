@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-1 Murf AI 30-Day Challenge</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="static/logo.jpeg" alt="Murf AI Logo" class="logo">
+            <h1>Murf AI</h1>
+            <h2>Text to Speech API</h2><br/>
+            <p>Day 2: REST TTS Endpoint</p>
+        </header>
+        
+        <main>
+            <div class="tts-form">
+                <h2>Generate Speech</h2>
+                <form id="ttsForm">
+                    <div class="input-group">
+                        <label for="textInput">Enter text to convert:</label>
+                        <textarea id="textInput" placeholder="Enter your Text here.." required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="voiceSelect">Select Voice:</label>
+                        <select id="voiceSelect">
+                            <option value="en-US-natalie">Natalie (US English)</option>
+                            <option value="en-US-ken">Ken (US English)</option>
+                            <option value="en-US-sarah">Sarah (US English)</option>
+                            <option value="en-GB-daniel">Daniel (UK English)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" id="generateBtn">Generate Speech</button>
+                </form>
+                
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Generating audio...</p>
+                </div>
+                
+                <div id="result" class="result hidden">
+                    <div class="success-message">
+                        <h3>Speech Generated Successfully!</h3>
+                        <audio id="audioPlayer" controls>
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                
+                <div id="error" class="error hidden">
+                    <h3>Error</h3>
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+            
+            
+        </main>
+    </div>
+    
+    <script src="static/script.js"></script>
+</body>
+</html>
