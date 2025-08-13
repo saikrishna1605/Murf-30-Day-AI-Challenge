@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling Demo - AI Voice Agent</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .scenario { background: white; margin: 20px 0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .error { color: #e74c3c; font-weight: bold; }
+        .success { color: #27ae60; font-weight: bold; }
+        .warning { color: #f39c12; font-weight: bold; }
+        .code { background: #f8f9fa; padding: 10px; border-radius: 4px; font-family: monospace; }
+        h1 { color: #2c3e50; text-align: center; }
+        h2 { color: #34495e; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ AI Voice Agent - Error Handling System</h1>
+        
+        <div class="scenario">
+            <h2>📋 System Architecture</h2>
+            <p><strong>The error handling system has 4 layers:</strong></p>
+            <ul>
+                <li><span class="success">Layer 1:</span> Input Validation (file size, format, empty text)</li>
+                <li><span class="success">Layer 2:</span> API Communication (timeouts, retries, status codes)</li>
+                <li><span class="warning">Layer 3:</span> Graceful Degradation (partial success, fallbacks)</li>
+                <li><span class="error">Layer 4:</span> User Feedback (clear messages, recovery instructions)</li>
+            </ul>
+        </div>
+
+        <div class="scenario">
+            <h2>🎯 Scenario 1: Normal Operation</h2>
+            <p><span class="success">✅ All APIs Available</span></p>
+            <div class="code">
+                User speaks → STT transcribes → LLM responds → TTS generates audio
+                Status: "success"
+                Result: Full voice conversation
+            </div>
+        </div>
+
+        <div class="scenario">
+            <h2>⚠️ Scenario 2: STT Failure</h2>
+            <p><span class="error">❌ Speech-to-Text API Down</span></p>
+            <div class="code">
+                User speaks → STT fails → Fallback message
+                Status: "fallback"
+                Message: "I'm having trouble understanding your audio right now"
+            </div>
+        </div>
+
+        <div class="scenario">
+            <h2>🤖 Scenario 3: LLM Failure</h2>
+            <p><span class="warning">⚠️ Large Language Model API Down</span></p>
+            <div class="code">
+                User speaks → STT works → LLM fails → Preset response → TTS works
+                Status: "partial_success"
+                Message: "I'm having trouble connecting to my AI brain right now"
+            </div>
+        </div>
+
+        <div class="scenario">
+            <h2>🔊 Scenario 4: TTS Failure</h2>
+            <p><span class="warning">⚠️ Text-to-Speech API Down</span></p>
+            <div class="code">
+                User speaks → STT works → LLM responds → TTS fails → Text display
+                Status: "partial_success"
+                Result: Shows conversation in text form
+                Message: "I understand you, but I'm having trouble generating speech"
+            </div>
+        </div>
+
+        <div class="scenario">
+            <h2>🌐 Scenario 5: Network Issues</h2>
+            <p><span class="error">❌ Connection Problems</span></p>
+            <div class="code">
+                Request → Network timeout → Retry → Fallback
+                Status: "error"
+                Messages:
+                - "Request timed out. The service might be busy"
+                - "Unable to connect to the service"
+                - "Please check your internet connection"
+            </div>
+        </div>
+
+        <div class="scenario">
+            <h2>🎙️ Scenario 6: Microphone Issues</h2>
+            <p><span class="error">❌ Audio Recording Problems</span></p>
+            <div class="code">
+                Client-side errors:
+                - Permission denied → "Please allow microphone access"
+                - No microphone → "No microphone found"
+                - Unsupported browser → "Please use Chrome, Firefox, or Safari"
+            </div>
+        </div>
+
+        <div class="scenario">
+            <h2>🔧 Recovery Mechanisms</h2>
+            <ul>
+                <li><strong>Automatic Retries:</strong> Network requests retry with backoff</li>
+                <li><strong>Graceful Degradation:</strong> Partial functionality when some APIs fail</li>
+                <li><strong>User Guidance:</strong> Clear instructions for resolution</li>
+                <li><strong>Fallback Responses:</strong> Pre-defined helpful messages</li>
+                <li><strong>Health Monitoring:</strong> Real-time service status checking</li>
+            </ul>
+        </div>
+
+        <div class="scenario">
+            <h2>🎯 Testing Error Scenarios</h2>
+            <p><strong>To test different error scenarios:</strong></p>
+            <ol>
+                <li>Comment out API keys in .env file</li>
+                <li>Use invalid API keys</li>
+                <li>Disconnect internet during requests</li>
+                <li>Send very large audio files</li>
+                <li>Record empty/silent audio</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

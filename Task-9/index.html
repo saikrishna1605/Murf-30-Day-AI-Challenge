@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-9 Murf AI 30-Day Challenge</title>
+    <link rel="icon" href="static/logo.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="static/logo.jpeg" alt="Murf AI Logo" class="logo">
+            <h1>Murf AI</h1>
+            <h2>Text to Speech API</h2><br/>
+            <p> Day 9: The Full Non-Streaming Pipeline - AI Voice Agent</p>
+        </header>
+        
+        <main>
+            <div class="tts-form">
+                <h2>Generate Speech</h2>
+                <form id="ttsForm">
+                    <div class="input-group">
+                        <label for="textInput">Enter text to convert:</label>
+                        <textarea id="textInput" placeholder="Enter your Text here.." required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="voiceSelect">Select Voice:</label>
+                        <select id="voiceSelect">
+                            <option value="en-US-natalie">Natalie (US English)</option>
+                            <option value="en-US-ken">Ken (US English)</option>
+                            <option value="en-US-sarah">Sarah (US English)</option>
+                            <option value="en-GB-daniel">Daniel (UK English)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" id="generateBtn">Generate Speech</button>
+                </form>
+                
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Generating audio...</p>
+                </div>
+                
+                <div id="result" class="result hidden">
+                    <div class="success-message">
+                        <h3>Speech Generated Successfully!</h3>
+                        <audio id="audioPlayer" controls preload="none" crossorigin="anonymous">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="audio-info">
+                            <p>Audio URL: <span id="audioUrl"></span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="error" class="error hidden">
+                    <h3>Error</h3>
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+
+            <div class="echo-bot">
+                <h1>AI Voice Agent v3</h1>
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="echo">
+                        <!-- <span class="mode-icon">🔄</span> -->
+                        <span class="mode-text">Echo Mode</span>
+                        <span class="mode-desc">Repeat back</span>
+                    </button>
+                    <button class="mode-btn" data-mode="llm">
+                        <!-- <span class="mode-icon">🤖</span> -->
+                        <span class="mode-text">AI Mode</span>
+                        <span class="mode-desc">Intelligent response</span>
+                    </button>
+                </div>
+                <div class="button-container">
+                    <button id="startRecording" type="button">Start</button>
+                    <button id="stopRecording" type="button" disabled>Stop</button>
+                </div>
+                <div class="recording-indicator hidden" id="recordingIndicator">
+                    <div class="recording-dot"></div>
+                    <span id="recordingText">Recording in progress...</span>
+                </div>
+                <div class="processing-indicator hidden" id="processingIndicator">
+                    <div class="spinner"></div>
+                    <span id="processingText">Processing...</span>
+                </div>
+                <div class="audio-container">
+                    <audio id="audioPlayback" controls></audio>
+                </div>
+                <div id="transcribeContainer" class="hidden">
+                    <button id="transcribeBtn" type="button" class="hidden-button">Re-process Echo</button>
+                    <p id="transcribingStatus" class="hidden">Processing echo...</p>
+                </div>
+                <div id="transcriptionResult" class="result hidden">
+                    <h3 id="resultTitle">What you said:</h3>
+                    <p id="transcriptionText"></p>
+                    <div id="llmResponseSection" class="hidden">
+                        <h3>AI Response:</h3>
+                        <p id="llmResponseText"></p>
+                    </div>
+                </div>
+            </div>
+
+            
+        </main>
+    </div>
+    
+    <script src="static/script.js"></script>
+</body>
+</html>
+</html>
+
